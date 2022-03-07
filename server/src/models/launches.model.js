@@ -17,6 +17,10 @@ const launch = {
 
 launches.set(launch.flightNumber, launch);
 
+function existsLaunchWithId(launchId) {
+    return launches.has(launchId);
+}
+
 function getAllLaunches() {
     return Array.from(launches.values());
 }
@@ -31,9 +35,21 @@ function addNewLaunch(launch) {
             customer: ['Zero to Mastery', 'NASA'],
             upcoming: true,
             flightNumber: latestFLightNumber,
-        }));
+        })
+    );
 }
+
+function abortLaunchById(launchId) {
+    //launch.delete(launchId);
+    const aborted = launches.get(launchId);
+    aborted.upcoming = false;
+    aborted.success = false;
+    return aborted;
+}
+
 module.exports = {
     getAllLaunches,
     addNewLaunch,
+    existsLaunchWithId,
+    abortLaunchById,
 };
