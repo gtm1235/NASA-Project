@@ -5,22 +5,27 @@
   "main": "src/server.js",
   "scripts": {
     "watch": "nodemon src/server.js",
-    "test": "jest",
+    "test": "jest --detectOpenHandles",
     "test-watch": "jest --watch",
     "start": "node src/server.js",
     "cluster": "pm2 start src/server.js -i max"
   },
   "author": "",
   "license": "ISC",
+  "jest": {
+    "testEnvironment": "node"
+  },
   "dependencies": {
     "cors": "^2.8.5",
     "csv-parse": "^5.0.4",
+    "dotenv": "^16.0.0",
     "express": "^4.17.3",
+    "mongoose": "^6.2.7",
     "nasa-project": "file:..",
     "pm2": "^5.2.0"
   },
   "devDependencies": {
-    "jest": "^27.5.1",
+    "jest": "^26.6.3",
     "nodemon": "^2.0.15",
     "supertest": "^6.2.2"
   }
